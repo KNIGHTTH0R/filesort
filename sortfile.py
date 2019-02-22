@@ -20,11 +20,20 @@ def searchfile():
 
     filename = []
     olpath = path + '/' + oldir
-
+    
+    #filter by filename
     for f in os.listdir(olpath):
         if os.path.isfile(os.path.join(olpath, f)):
             if filepart in f:
                 filename.append(f)
+
+    #filter by filecontent
+    for f in os.listdir(olpath):
+        with open(f) as file:
+            contents = file.read()
+            if filepart in contents:
+                filename.append(f)
+
 
     return movefile()
 
