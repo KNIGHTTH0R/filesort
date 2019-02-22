@@ -23,7 +23,8 @@ def searchfile():
 
     for f in os.listdir(olpath):
         if os.path.isfile(os.path.join(olpath, f)):
-            filename.append(f)
+            if filepart in f:
+                filename.append(f)
 
     return movefile()
 
@@ -42,9 +43,10 @@ def main():
     
     global dirname
     global oldir
+    global filepart
     oldir = input('\nInput source folder: ')
     dirname = input('\nInput new folder name: ')
-
+    filepart = input('\nInput part of the file name: ')
     return makedir()
 
 main()
